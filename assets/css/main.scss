@@ -1,0 +1,160 @@
+---
+# Uses SCSS so fonts and colors can be easily changed
+---
+
+$black: #1f2328;
+$light: rgba(31,35,40,0.15);
+$body-font: system-ui, sans-serif;
+
+html, body {
+    margin: 1.5em auto;
+    max-width: 60em;
+    width: calc(100vw - 4em);
+    height: calc(100vh - 3em);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+body {
+    color: $black;
+    font-family: $body-font;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+h1 {
+    font-size: 2.4em;
+    font-weight: 600;
+    padding-bottom: 0.2em;
+    border-bottom: 1px solid $light;
+    margin: 0;
+}
+
+h3 {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 0 0 0.2em 0;
+}
+
+.header > p {
+    font-size: 16px;
+    margin: 1em 0 0 0;
+}
+
+.footer {
+    padding: 0 0 2em 0;
+    text-align: center;
+}
+
+.card-list {
+    margin: 3em 0;
+    align-self: start;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+    grid-gap: 1em;
+}
+
+.card {
+    padding: 1.2em;
+    border: 1px solid $light;
+    border-radius: 6px;
+    box-shadow: rgba(140,149,159,0.15) 0px 3px 6px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.card:hover {
+    box-shadow: rgba(140,149,159,0.2) 0px 8px 24px;
+}
+
+.card > img {
+    filter: drop-shadow(rgba(140,149,159,0.2) 0px 8px 24px);
+}
+
+.hidden {
+    display: none;
+}
+
+.overlay {
+    background: rgba(31,35,40,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
+.modal {
+    position: fixed;
+    margin: 10vh auto;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    max-height: 80vh;
+    max-width: 35em;
+    width: calc(100vw - 4em);
+    overflow: auto;
+    border-radius: 6px;
+    background: white;
+    box-shadow: rgba(0,0,0,0.4) 0 0 18px;
+}
+
+.modal-header {
+    padding: 1.2em;
+    display: grid;
+    place-content: center;
+}
+
+.button {
+    display: inline-block;
+    text-decoration: none;
+    font-family: $body-font;
+    font-size: 1.5em;
+    position: absolute;
+    right: 0.5em;
+    cursor: pointer;
+}
+
+.modal-content {
+    padding: 0 1.2em 1.2em 1.2em;
+}
+
+.modal-title {
+    background: white;
+    padding-top: 1.2em;
+    padding-bottom: 1.8em;
+    border-bottom: 1px solid $light;
+    position: sticky;
+    top: 0;
+}
+
+.modal-title > p {
+    margin: 0;
+}
+
+.modal-content > table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.modal-content > table tbody td {
+    padding: 0.5em 0.75em;
+    border-bottom: 1px solid $light;
+}
+
+.login {
+    color: $black;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login:hover {
+    color: #0969da;
+    text-decoration: underline;
+}
+
+.points {
+    text-align: right;
+}

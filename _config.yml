@@ -1,0 +1,113 @@
+title: Github Achievements
+header: 🎉 Github Profile Achievements
+description: >-
+  This website recognizes Github users who have achieved various milestones
+  deserving of recognition. It was inspired by flet's [Rejected Github Profile
+  Achievements](https://github.com/Flet/rejected-github-profile-achievements),
+  and created with the help of Clickhub's [GH Archive
+  playground](https://ghe.clickhouse.tech/). Because of this, statistics are
+  based only on certain public events, and may ignore actions that took place
+  during archive downtime, while including activity on since-deleted
+  repositories. You can inspect the queries used in the [github
+  repo](https://github.com/cqcumbers/github_achievements).
+sass:
+  style: compressed
+badges:
+# icons created with fusionbrain.ai and photopea
+# gradients created with joshwcomeau's generator
+- name: 'Vital Contributor'
+  description: 'Made over 100 issue comments consisting of just "+1" or 👍.'
+  icon: vital_contributor.png
+  gradient: 'background-image:
+  linear-gradient(10deg,
+    hsl(146deg 100% 31%) 0%,
+    hsl(103deg 52% 49%) 33%,
+    hsl(79deg 74% 53%) 67%,
+    hsl(62deg 98% 56%) 100%
+  );'
+  points: '+1''s'
+  path: vital_contributor
+- name: 'Speed Reader'
+  description: 'Merged a pull request with over 10,000 additions in under 30 seconds.'
+  icon: speed_reader.png
+  gradient: 'background-image:
+  linear-gradient(350deg,
+    hsl(282deg 100% 39%) 0%,
+    hsl(269deg 75% 49%) 33%,
+    hsl(253deg 81% 55%) 67%,
+    hsl(225deg 100% 49%) 100%
+  );'
+  points: 'merged'
+  path: speed_reader
+- name: 'This is Fine'
+  description: 'Have over 10,000 open issues on public repositories you own.'
+  icon: this_is_fine.png
+  gradient: 'background-image:
+  linear-gradient(0deg,
+    hsl(0deg 100% 39%) 0%,
+    hsl(24deg 100% 44%) 33%,
+    hsl(37deg 100% 47%) 67%,
+    hsl(48deg 100% 49%) 100%
+  );'
+  points: 'issues'
+  path: this_is_fine
+- name: 'Patient Skeleton'
+  description: 'Submit a bug fix pull request that is merged over 2 years later.'
+  icon: patient_skeleton.png
+  gradient: 'background-image:
+  linear-gradient(30deg,
+    hsl(240deg 100% 5%) 0%,
+    hsl(200deg 100% 19%) 33%,
+    hsl(184deg 100% 28%) 67%,
+    hsl(158deg 88% 42%) 100%
+  );'
+  points: 'PRs'
+  path: patient_skeleton
+- name: 'Archivist'
+  description: 'Fork over 5000 repositories.'
+  icon: archivist.png
+  gradient: 'background-image:
+  linear-gradient(0deg,
+    hsl(223deg 100% 25%) 8%,
+    hsl(319deg 86% 36%) 60%,
+    hsl(2deg 94% 64%) 81%,
+    hsl(42deg 100% 51%) 100%
+  );'
+  points: 'forks'
+  path: archivist
+- name: 'Arborist'
+  description: 'Have over 300 branches merged but not deleted in your repositories.'
+  icon: arborist.png
+  gradient: 'background-image:
+  linear-gradient(15deg,
+    hsl(149deg 97% 14%) 0%,
+    hsl(117deg 59% 32%) 35%,
+    hsl(86deg 42% 57%) 69%,
+    hsl(54deg 94% 87%) 100%
+  );'
+  points: 'branches'
+  path: arborist
+- name: 'Ideas Person'
+  description: 'Open over 150 feature request issues in public repositories.'
+  icon: ideas_person.png
+  gradient: 'background-image:
+  linear-gradient(320deg,
+    hsl(28deg 100% 47%) 0%,
+    hsl(39deg 100% 49%) 24%,
+    hsl(51deg 100% 48%) 48%,
+    hsl(66deg 100% 52%) 100%
+  );'
+  points: 'issues'
+  path: ideas_person
+- name: 'Status Quo'
+  description: 'Close over 50 issues as wontfix.'
+  icon: status_quo.png
+  gradient: 'background-image:
+  linear-gradient(0deg,
+    hsl(223deg 97% 43%) 0%,
+    hsl(202deg 77% 57%) 33%,
+    hsl(181deg 82% 73%) 67%,
+    hsl(160deg 100% 89%) 100%
+  );'
+  points: 'issues'
+  path: status_quo

@@ -1,0 +1,80 @@
+---
+# Template for html of achievements
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ site.title }}</title>
+    <meta name="description" content="{{ site.title }}">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link href="{{ '/assets/css/main.css' | relative_url }}" rel="stylesheet">
+  </head>
+  </head>
+  <body>
+    <div class="overlay hidden"></div>
+    <header class="header">
+      <h1>{{ site.header }}</h1>
+      {{ site.description | markdownify }}
+    </header>
+    <main class="card-list">
+      {% for badge in site.badges %}
+      <div class="card" data-modal="{{ badge.path }}">
+        <img src="{{ site.baseurl }}/assets/images/{{ badge.icon }}" width="128" alt="Achievement: {{ badge.name }}">
+        <h3>{{ badge.name }}</h3>
+      </div>
+
+      <div class="modal hidden" id="{{ badge.path }}">
+        <a class="button" data-modal="{{ badge.path }}">
+          <span>&times;</span>
+        </a>
+        <div class="modal-header" style="{{ badge.gradient }}">
+          <img src="{{ site.baseurl }}/assets/images/{{ badge.icon }}" width="140" alt="Achievement: {{ badge.name }}">
+        </div>
+        <div class="modal-content">
+          <div class="modal-title">
+            <h3>{{ badge.name }}</h3>
+            <p>{{ badge.description }}</p>
+          </div>
+          <table>
+            {% for user in site.data[badge.path] %}
+            <tr>
+              <td>#{{ forloop.index }}</td>
+              <td><a class="login" href="https://github.com/{{ user.login }}">{{ user.login }}</a></td>
+              <td class="points">{{ user.points }} {{ badge.points }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+      {% endfor %}
+    </main>
+    <footer class="footer">
+      <span>Made by <a href="https://github.com/cqcumbers">CQCumbers</a>, updated {{ site.time | date: "%B %d, %Y" }}</span>
+    </footer>
+
+    <script>
+      const overlay = document.querySelector(".overlay");
+
+      const cards = document.querySelectorAll(".card");
+      cards.forEach(card => card.addEventListener("click", event => {
+          overlay.classList.remove("hidden");
+          const modal = document.getElementById(event.currentTarget.dataset.modal);
+          modal.classList.remove("hidden");
+      }));
+
+      const buttons = document.querySelectorAll(".button");
+      buttons.forEach(button => button.addEventListener("click", event => {
+          overlay.classList.add("hidden");
+          const modal = document.getElementById(event.currentTarget.dataset.modal);
+          modal.classList.add("hidden");
+      }));
+    </script>
+  </body>
+</html>
