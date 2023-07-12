@@ -75,6 +75,12 @@
           const modal = document.getElementById(event.currentTarget.dataset.modal);
           modal.classList.add("hidden");
       }));
+
+      overlay.addEventListener("click", event => {
+          overlay.classList.add("hidden");
+          modals = document.querySelectorAll(".modal");
+          modals.forEach(modal => modal.classList.add("hidden"));
+      });
     </script>
   </body>
 </html>
