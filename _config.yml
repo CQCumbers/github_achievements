@@ -4,7 +4,7 @@ description: >-
   This website recognizes Github users who have achieved various milestones
   deserving of recognition. It was inspired by flet's [Rejected Github Profile
   Achievements](https://github.com/Flet/rejected-github-profile-achievements),
-  and created with the help of Clickhub's [GH Archive
+  and created with the help of ClickHouse's [GH Archive
   playground](https://ghe.clickhouse.tech/). Because of this, statistics are
   based only on certain public events, and may ignore actions that took place
   during archive downtime, while including activity on since-deleted
