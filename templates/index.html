@@ -1,0 +1,243 @@
+{# Template for html of achievements #}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ config.title }}</title>
+    <meta name="description" content="{{ config.title }}">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,{{ load_data(path="assets/images/favicon-32x32.png.b64", format="plain") | safe }}">
+    <style>
+      :root {
+          --black: #1f2328;
+          --light: rgba(31,35,40,0.15);
+          --body-font: system-ui, sans-serif;
+      }
+
+      html, body {
+          margin: 1.5em auto;
+          max-width: 60em;
+          width: calc(100vw - 4em);
+          height: calc(100vh - 3em);
+          display: grid;
+          grid-template-rows: auto 1fr auto;
+      }
+
+      body {
+          color: var(--black);
+          font-family: var(--body-font);
+          font-size: 14px;
+          line-height: 1.5;
+      }
+
+      h1 {
+          font-size: 2.4em;
+          font-weight: 600;
+          padding-bottom: 0.2em;
+          border-bottom: 1px solid var(--light);
+          margin: 0;
+      }
+
+      h3 {
+          font-size: 1.5em;
+          font-weight: 600;
+          margin: 0 0 0.2em 0;
+      }
+
+      .header > p {
+          font-size: 16px;
+          margin: 1em 0 0 0;
+      }
+
+      .footer {
+          padding: 0 0 2em 0;
+          text-align: center;
+      }
+
+      .card-list {
+          margin: 3em 0;
+          align-self: start;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+          grid-gap: 1em;
+      }
+
+      .card {
+          padding: 1.2em;
+          border: 1px solid var(--light);
+          border-radius: 6px;
+          box-shadow: rgba(140,149,159,0.15) 0px 3px 6px;
+          text-align: center;
+          cursor: pointer;
+      }
+
+      .card:hover {
+          box-shadow: rgba(140,149,159,0.2) 0px 8px 24px;
+      }
+
+      .card > img {
+          filter: drop-shadow(rgba(140,149,159,0.2) 0px 8px 24px);
+      }
+
+      .hidden {
+          display: none;
+      }
+
+      .overlay {
+          background: rgba(31,35,40,0.5);
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 10;
+      }
+
+      .modal {
+          position: fixed;
+          margin: 10vh auto;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 999;
+          max-height: 80vh;
+          max-width: 35em;
+          width: calc(100vw - 4em);
+          overflow: auto;
+          border-radius: 6px;
+          background: white;
+          box-shadow: rgba(0,0,0,0.4) 0 0 18px;
+      }
+
+      .modal-header {
+          padding: 1.2em;
+          display: grid;
+          place-content: center;
+      }
+
+      .button {
+          display: inline-block;
+          text-decoration: none;
+          font-family: var(--body-font);
+          font-size: 1.5em;
+          position: absolute;
+          right: 0.5em;
+          cursor: pointer;
+      }
+
+      .modal-content {
+          padding: 0 1.2em 1.2em 1.2em;
+      }
+
+      .modal-title {
+          background: white;
+          padding-top: 1.2em;
+          padding-bottom: 1.8em;
+          border-bottom: 1px solid var(--light);
+          position: sticky;
+          top: 0;
+      }
+
+      .modal-title > p {
+          margin: 0;
+      }
+
+      .modal-content > table {
+          border-collapse: collapse;
+          width: 100%;
+      }
+
+      .modal-content > table tbody td {
+          padding: 0.5em 0.75em;
+          border-bottom: 1px solid var(--light);
+      }
+
+      .login {
+          color: var(--black);
+          font-weight: 600;
+          text-decoration: none;
+      }
+
+      .login:hover {
+          color: #0969da;
+          text-decoration: underline;
+      }
+
+      .points {
+          text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="overlay hidden"></div>
+    <header class="header">
+      <h1>{{ config.extra.header }}</h1>
+      {{ config.description | markdown | safe }}
+    </header>
+    <main class="card-list">
+      {% for badge in config.extra.badges %}
+      {% set icon = "assets/images/" ~ badge.path ~ ".png.b64" %}
+      <div class="card" data-modal="{{ badge.path }}">
+        <img src="data:image/png;base64,{{ load_data(path=icon, format="plain") | safe }}" width="128" alt="Achievement: {{ badge.name }}">
+        <h3>{{ badge.name }}</h3>
+      </div>
+
+      <div class="modal hidden" id="{{ badge.path }}">
+        <a class="button" data-modal="{{ badge.path }}">
+          <span>&times;</span>
+        </a>
+        <div class="modal-header" style="background-image: {{ badge.gradient }}">
+          <img width="140" alt="Achievement: {{ badge.name }}">
+        </div>
+        <div class="modal-content">
+          <div class="modal-title">
+            <h3>{{ badge.name }}</h3>
+            <p>{{ badge.description }}</p>
+          </div>
+          <table>
+            {% set users = load_data(path="data/" ~ badge.path ~ ".csv") %}
+            {% for user in users.records %}
+            <tr>
+              <td>#{{ loop.index }}</td>
+              <td><a class="login" href="https://github.com/{{ user.0 }}">{{ user.0 }}</a></td>
+              <td class="points">{{ user.1 }} {{ badge.points }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+      {% endfor %}
+    </main>
+    <footer class="footer">
+      <span>Made by <a href="https://github.com/cqcumbers">CQCumbers</a>, updated {{ now() | date(format="%B %d, %Y") }}</span>
+    </footer>
+
+    <script>
+      const overlay = document.querySelector(".overlay");
+
+      const cards = document.querySelectorAll(".card");
+      cards.forEach(card => card.addEventListener("click", event => {
+          overlay.classList.remove("hidden");
+          const modal = document.getElementById(event.currentTarget.dataset.modal);
+          modal.classList.remove("hidden");
+          // Reuse the card's inlined icon rather than embedding it twice
+          modal.querySelector("img").src = event.currentTarget.querySelector("img").src;
+      }));
+
+      const buttons = document.querySelectorAll(".button");
+      buttons.forEach(button => button.addEventListener("click", event => {
+          overlay.classList.add("hidden");
+          const modal = document.getElementById(event.currentTarget.dataset.modal);
+          modal.classList.add("hidden");
+      }));
+
+      overlay.addEventListener("click", event => {
+          overlay.classList.add("hidden");
+          modals = document.querySelectorAll(".modal");
+          modals.forEach(modal => modal.classList.add("hidden"));
+      });
+    </script>
+  </body>
+</html>

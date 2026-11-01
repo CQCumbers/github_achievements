@@ -9,7 +9,7 @@
 #GROUP BY login
 #  HAVING points > 100
 #ORDER BY points DESC' \
-#  -o _data/vital_contributor.csv
+#  -o data/vital_contributor.csv
 
 #curl 'https://play.clickhouse.com/?default_format=CSVWithNames' \
 #  -X POST \
@@ -41,7 +41,7 @@
 #GROUP BY login
 #  HAVING points > 3
 #ORDER BY points DESC' \
-#  -o _data/speed_reader.csv
+#  -o data/speed_reader.csv
 
 #curl 'https://play.clickhouse.com/?default_format=CSVWithNames' \
 #  -X POST \
@@ -62,7 +62,7 @@
 #GROUP BY login
 #  HAVING points > 10000
 #ORDER BY points DESC' \
-#  -o _data/this_is_fine.csv
+#  -o data/this_is_fine.csv
 
 #curl 'https://play.clickhouse.com/?default_format=CSVWithNames' \
 #  -X POST \
@@ -95,7 +95,7 @@
 #GROUP BY login
 #  HAVING points > 1
 #ORDER BY points DESC' \
-#  -o _data/patient_skeleton.csv
+#  -o data/patient_skeleton.csv
 
 #curl 'https://play.clickhouse.com/?default_format=CSVWithNames' \
 #  -X POST \
@@ -108,7 +108,7 @@
 #GROUP BY login
 #  HAVING points > 5000
 #ORDER BY points DESC' \
-#  -o _data/archivist.csv
+#  -o data/archivist.csv
 
 #curl 'https://play.clickhouse.com/?default_format=CSVWithNames' \
 #  -X POST \
@@ -134,7 +134,7 @@
 #GROUP BY login
 #  HAVING points > 300
 #ORDER BY points DESC' \
-#  -o _data/arborist.csv
+#  -o data/arborist.csv
 
 #curl 'https://play.clickhouse.com/?default_format=CSVWithNames' \
 #  -X POST \
@@ -160,7 +160,7 @@
 #GROUP BY login
 #  HAVING points > 150
 #ORDER BY points DESC' \
-#  -o _data/ideas_person.csv
+#  -o data/ideas_person.csv
 
 #curl 'https://play.clickhouse.com/?default_format=CSVWithNames' \
 #  -X POST \
@@ -175,4 +175,4 @@
 #GROUP BY login
 #  HAVING points > 50
 #ORDER BY points DESC' \
-#  -o _data/status_quo.csv
+#  -o data/status_quo.csv
