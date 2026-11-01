@@ -8,7 +8,7 @@
     <title>{{ config.title }}</title>
     <meta name="description" content="{{ config.title }}">
 
-    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,{{ load_data(path="assets/images/favicon-32x32.png.b64", format="plain") | safe }}">
+    <link rel="icon" type="image/png" href="{{ config.extra.emoji_cdn }}/1f389/128.png">
     <style>
       :root {
           --black: #1f2328;
@@ -77,8 +77,24 @@
           box-shadow: rgba(140,149,159,0.2) 0px 8px 24px;
       }
 
-      .card > img {
+      .card > .icon {
           filter: drop-shadow(rgba(140,149,159,0.2) 0px 8px 24px);
+      }
+
+      .icon {
+          box-sizing: border-box;
+          width: 128px;
+          height: 128px;
+          margin: 0 auto 0.3em auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 4px solid white;
+          border-radius: 50%;
+      }
+
+      .icon > img {
+          width: 64%;
       }
 
       .hidden {
@@ -115,6 +131,12 @@
           padding: 1.2em;
           display: grid;
           place-content: center;
+      }
+
+      .modal-header > .icon {
+          width: 140px;
+          height: 140px;
+          margin: 0;
       }
 
       .button {
@@ -178,9 +200,10 @@
     </header>
     <main class="card-list">
       {% for badge in config.extra.badges %}
-      {% set icon = "assets/images/" ~ badge.path ~ ".png.b64" %}
       <div class="card" data-modal="{{ badge.path }}">
-        <img src="data:image/png;base64,{{ load_data(path=icon, format="plain") | safe }}" width="128" alt="Achievement: {{ badge.name }}">
+        <div class="icon" style="background-image: {{ badge.background }}">
+          <img src="{{ config.extra.emoji_cdn }}/{{ badge.emoji }}/128.png" alt="Achievement: {{ badge.name }}">
+        </div>
         <h3>{{ badge.name }}</h3>
       </div>
 
@@ -189,7 +212,9 @@
           <span>&times;</span>
         </a>
         <div class="modal-header" style="background-image: {{ badge.gradient }}">
-          <img width="140" alt="Achievement: {{ badge.name }}">
+          <div class="icon" style="background-image: {{ badge.background }}">
+            <img src="{{ config.extra.emoji_cdn }}/{{ badge.emoji }}/128.png" alt="Achievement: {{ badge.name }}">
+          </div>
         </div>
         <div class="modal-content">
           <div class="modal-title">
@@ -211,7 +236,9 @@
       {% endfor %}
     </main>
     <footer class="footer">
-      <span>Made by <a href="https://github.com/cqcumbers">CQCumbers</a>, updated {{ now() | date(format="%B %d, %Y") }}</span>
+      <span>Made by <a href="https://github.com/cqcumbers">CQCumbers</a>, updated July 09, 2023.</span>
+      <br/>
+      <span>Icons from <a href="https://googlefonts.github.io/noto-emoji-files/">Noto Emoji</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>)</span>
     </footer>
 
     <script>
@@ -222,8 +249,6 @@
           overlay.classList.remove("hidden");
           const modal = document.getElementById(event.currentTarget.dataset.modal);
           modal.classList.remove("hidden");
-          // Reuse the card's inlined icon rather than embedding it twice
-          modal.querySelector("img").src = event.currentTarget.querySelector("img").src;
       }));
 
       const buttons = document.querySelectorAll(".button");

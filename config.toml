@@ -18,7 +18,9 @@ generate_robots_txt = false
 [extra]
 header = "🎉 Github Profile Achievements"
 
-# icons created with fusionbrain.ai and photopea
+emoji_cdn = "https://fonts.gstatic.com/s/e/noto3demoji/latest"
+
+# icons are noto 3d emoji, by codepoint, over background gradients
 # gradients created with joshwcomeau's generator
 [[extra.badges]]
 name = "Vital Contributor"
@@ -30,6 +32,8 @@ gradient = """linear-gradient(10deg,
   hsl(62deg 98% 56%) 100%
 )"""
 points = "+1's"
+background = "linear-gradient(180deg, #03b38a 0%, #035775 50%, #034370 100%)"
+emoji = "1f44d"
 path = "vital_contributor"
 
 [[extra.badges]]
@@ -42,6 +46,8 @@ gradient = """linear-gradient(350deg,
   hsl(225deg 100% 49%) 100%
 )"""
 points = "merged"
+background = "linear-gradient(200deg, #fc707d 0%, #d045a0 35%, #9732c0 65%, #4c2cc2 100%)"
+emoji = "23f1"
 path = "speed_reader"
 
 [[extra.badges]]
@@ -54,6 +60,8 @@ gradient = """linear-gradient(0deg,
   hsl(48deg 100% 49%) 100%
 )"""
 points = "issues"
+background = "linear-gradient(180deg, #1e2f4d 0%, #8e3f4e 35%, #d32e31 60%, #fd9f21 100%)"
+emoji = "1f525"
 path = "this_is_fine"
 
 [[extra.badges]]
@@ -66,6 +74,8 @@ gradient = """linear-gradient(30deg,
   hsl(158deg 88% 42%) 100%
 )"""
 points = "PRs"
+background = "linear-gradient(180deg, #9565b2 0%, #6592c3 50%, #00efd4 100%)"
+emoji = "1f480"
 path = "patient_skeleton"
 
 [[extra.badges]]
@@ -78,6 +88,8 @@ gradient = """linear-gradient(0deg,
   hsl(42deg 100% 51%) 100%
 )"""
 points = "forks"
+background = "linear-gradient(180deg, #ff6134 0%, #ff6a58 50%, #c642cc 100%)"
+emoji = "1f4da"
 path = "archivist"
 
 [[extra.badges]]
@@ -90,6 +102,8 @@ gradient = """linear-gradient(15deg,
   hsl(54deg 94% 87%) 100%
 )"""
 points = "branches"
+background = "linear-gradient(180deg, #e6ece1 0%, #98bd94 40%, #5a9e4a 65%, #1f4b27 100%)"
+emoji = "1f332"
 path = "arborist"
 
 [[extra.badges]]
@@ -102,6 +116,8 @@ gradient = """linear-gradient(320deg,
   hsl(66deg 100% 52%) 100%
 )"""
 points = "issues"
+background = "linear-gradient(180deg, #71a5b2 0%, #c19183 50%, #fd9b50 100%)"
+emoji = "1f4a1"
 path = "ideas_person"
 
 [[extra.badges]]
@@ -114,4 +130,6 @@ gradient = """linear-gradient(0deg,
   hsl(160deg 100% 89%) 100%
 )"""
 points = "issues"
+background = "linear-gradient(180deg, #2d89df 0%, #2cade4 45%, #f8e799 60%, #e1f052 100%)"
+emoji = "1f6a7"
 path = "status_quo"
